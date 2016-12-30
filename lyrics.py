@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from urllib import request
+import urllib2
 import google
 
 """
@@ -14,7 +14,7 @@ import google
 """
 
 def getSoup(URL):
-    html = request.urlopen(URL)
+    html = urllib2.urlopen(URL)
     soup = BeautifulSoup(html, 'html.parser')
     return soup
 

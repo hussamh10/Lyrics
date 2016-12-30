@@ -8,11 +8,3 @@ def getArtistInfo(artist):
         artist = items[0]
     data = {'name': artist['name'], 'image': artist['images'][0]['url'], 'genre': artist['genres'][0]}
     return data
-
-def getSongInfo(artist):
-    spotify = spotipy.Spotify()
-    results = spotify.search(q='song' + artist, type='track')
-    print(results)
-    #items = results['']['items']
-    #if len(items) > 0:
-    #    artist = items[0]
