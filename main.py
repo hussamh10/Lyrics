@@ -1,3 +1,4 @@
+import time
 import os
 import random
 import spotilib
@@ -9,7 +10,7 @@ def generateMessage():
     message = "Please wait, " + random.choice(messages)
     return message
 
-def main():
+def update():
     os.system('cls')
     print generateMessage()
 
@@ -19,5 +20,15 @@ def main():
     lyrics = getLyrics(artist, song)
     os.system('cls')
     print(lyrics)
+
+def main():
+    old_song = 'None'
+
+    while True:
+        time.sleep(5)
+        song = spotilib.song()
+        if song != old_song:
+            update()
+            old_song = song
 
 main()
