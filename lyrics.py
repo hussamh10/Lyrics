@@ -1,8 +1,4 @@
-from bs4 import BeautifulSoup
-import urllib2
-import google
-
-"""
+'''
     Using the getLyrics function this module takes the artist's name and song's name as input
     and returns a string of lyrics
 
@@ -11,7 +7,13 @@ import google
     2. Gets the first reuslt
     3. Parses and returns the lyrics
 
-"""
+'''
+
+from bs4 import BeautifulSoup
+import urllib2
+import google
+
+
 
 def getSoup(URL):
     html = urllib2.urlopen(URL)
@@ -34,7 +36,6 @@ def parseSongName(song):            # removes any useless words in song title
 def getURL(artist, song):
     song = parseSongName(song)
     query = song + ' ' + artist + ' site:azlyrics.com'
-    print(query)
     result = google.search(query)
     try:
         URL = next(result)
@@ -70,7 +71,6 @@ def getLyrics(artist, song):
 
     try:
         URL = getURL(artist, song)
-        print(URL)
         soup = getSoup(URL)
         lyrics = parseLyrics(soup)
     except Exception as e:
